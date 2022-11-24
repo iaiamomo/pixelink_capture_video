@@ -38,6 +38,7 @@
 
 using namespace cv;
 
+#define N_FRAMES 1200
 #define DEFAULT_BUFLEN 512
 #define DEFAULT_PORT "27015"
 #define FRAME_WIDTH 2048
@@ -244,7 +245,7 @@ int main()
 			printf("i");
 		}
 
-		if (count1 >= 1200) {
+		if (count1 >= N_FRAMES) {
 			printf("Terminate process");
 			break;
 		}
