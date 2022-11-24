@@ -12,19 +12,21 @@ import time
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 2345
 
+CAPTURE_VIDEO_PATH = ""
+
 app = Flask(__name__)
 mail = Mail(app)
 
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = "rotalaser.software@gmail.com"
-app.config['MAIL_PASSWORD'] = "nmleyjwofltpgdik"
+app.config['MAIL_USERNAME'] = ""
+app.config['MAIL_PASSWORD'] = ""
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
-sender_mail = "rotalaser.software@gmail.com"
-receiver_mail = ["monti.1632488@studenti.uniroma1.it", "mathew@diag.uniroma1.it", "monitorruuvi@gmail.com", "gabriele1.desantis@gmail.com"]
+sender_mail = ""
+receiver_mail = []
 
 # inivio mail
 def send_email(fustella_id, session_id, in_session):
@@ -120,7 +122,7 @@ def main_mail():
                 logger.log(logging.INFO, "invio email "+str(fustella_id)+" in movimento")
                 send_email(fustella_id, session_id, in_session)
 
-                subprocess.call('start C:/Users/ROTALASER/Desktop/captureVideo/x64/Debug/captureVideo.exe', shell=True)
+                subprocess.call(f'start {CAPTURE_VIDEO_PATH}', shell=True)
                 print("First video captured")
                 logger.log(logging.INFO, "Start capturing videos")
 
